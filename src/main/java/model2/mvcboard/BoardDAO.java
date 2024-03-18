@@ -38,23 +38,15 @@ public class BoardDAO extends DBConnPool {
 	}
 	
 	
-//	목록에 출력할 실제 게시물을 인출(페이징 기능 추가)
+	//type에 따른 게시물 인출(페이징처리), 
 	public List<BoardDTO> selectListPage(Map<String, Object>map) {
-		/*
-		 모델1에서 사용했던 테이블이 board에서 mvcboard로 변경되었으므로 
-		 DTO객체와 컬럼명에 대한 수정을 해야한다. 
-		 */
 		List<BoardDTO> board = new Vector<BoardDTO>();
-		/*
-		 레코드 인출을 위한 select 쿼리문 작성. 최근 게시물이 상단에 출력해야하므로
-		 일련번호의 내림차순으로 정렬한다.  
-		 */
 		String query = " "
 					 + "SELECT * FROM ( "
 				     + "    SELECT Tb.*, ROWNUM rNum FROM ( "
 					 + "        SELECT * FROM courseboard ";
 		
-		 // type 조건 처리
+		// type 조건 처리
 	    String type = (String) map.get("type");
 	    if (type != null) {
 	        query += " WHERE type = '" + type + "' ";
@@ -90,11 +82,8 @@ public class BoardDAO extends DBConnPool {
             psmt.setString(2, map.get("end").toString());
 			
 			rs = psmt.executeQuery();
-			//반환된 ResultSet의 개수만큼 반복한다. 
 			while (rs.next()) {
-				//하나의 레코드를 저장할 수 있는 DTO 인스턴스 생성
 				BoardDTO dto = new BoardDTO();
-				//테이블이 mvcboard로 변경되므로 setter에 대한 수정이 필요하다.
 				dto.setIdx(rs.getString("idx"));
 				dto.setId(rs.getString("id"));
 				dto.setTitle(rs.getString("title"));
@@ -269,7 +258,7 @@ public class BoardDAO extends DBConnPool {
 	//아이디 중복체크
 	public boolean checkId(String userId) {
 	    String query = "SELECT COUNT(*) FROM member WHERE id=? ";
-	    boolean duplicateId = false; // Declare outside try block
+	    boolean duplicateId = false; 
 
 	    try {
 	        psmt = con.prepareStatement(query);
@@ -278,14 +267,12 @@ public class BoardDAO extends DBConnPool {
 
 	        if (rs.next()) {
 	            int count = rs.getInt(1);
-	            if (count > 0) {
-	                duplicateId = true; // If count > 0, userId already exists
+	            if (count >= 1) {
+	                duplicateId = true; 
 	            }
 	        }
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	    } finally {
-	        // Close resources if necessary
 	    }
 	    return duplicateId;
 	}

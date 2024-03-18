@@ -23,23 +23,18 @@ public class CourseListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		//커넥션풀을 통해 DB연결
 		BoardDAO dao = new BoardDAO();
 		
-		//Map컬렉션(파라미터 저장 및 그외 정보 저장
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		//검색어 파라미터
 		String searchField = request.getParameter("searchField");
 		String searchWord = request.getParameter("searchWord");
 		
 		if(searchWord != null) {
-			//검색어가 있는 경우 Map에 추가
 			map.put("searchField", searchField);
 			map.put("searchWord", searchWord);
 		}
 		
-		//게시물의 개수를 카운트한다. 
 		int totalCount = dao.selectCount(map);
 		
 		//페이지 처리 start
@@ -77,10 +72,10 @@ public class CourseListController extends HttpServlet {
 		 */
 		String pagingImg = BoardPage.pagingImg(totalCount, pageSize,
 				 blockPage, pageNum, "./course.do");
-		map.put("pagingImg", pagingImg);//출력할 페이지 번호
-		map.put("totalCount", totalCount);//게시물의 전체개수
-		map.put("pageSize", pageSize);//페이지당 출력개수
-		map.put("pageNum", pageNum);//현재 페이지 번호
+		map.put("pagingImg", pagingImg);
+		map.put("totalCount", totalCount);
+		map.put("pageSize", pageSize);
+		map.put("pageNum", pageNum);
 		
 		request.setAttribute("boardLists", boardLists);
 		request.setAttribute("map", map);

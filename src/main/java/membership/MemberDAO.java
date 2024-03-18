@@ -73,13 +73,14 @@ public class MemberDAO extends DBConnPool {
 		return result;
 	}
 	
-	public MemberDTO getMemberDTO(String uid, String upass) {
+	//사용자 인증
+	public MemberDTO getMemberDTO(String id, String pass) {
         MemberDTO dto = null;
         String query = "SELECT * FROM member WHERE id=? AND pass=?";
         try {
             PreparedStatement psmt = con.prepareStatement(query);
-            psmt.setString(1, uid);
-            psmt.setString(2, upass);
+            psmt.setString(1, id);
+            psmt.setString(2, pass);
             
             ResultSet rs = psmt.executeQuery();
             if (rs.next()) {
@@ -93,14 +94,14 @@ public class MemberDAO extends DBConnPool {
         return dto;
     }
 	
-	public int insertMember(MemberDTO member) {
+	public int insertMember(MemberDTO dto) {
 	    int result = 0;
 	    String query = "INSERT INTO member (id, pass, email) VALUES (?, ?, ?)";
 	    try {
 	        psmt = con.prepareStatement(query);
-	        psmt.setString(1, member.getId());
-	        psmt.setString(2, member.getPass());
-	        psmt.setString(3, member.getEmail());
+	        psmt.setString(1, dto.getId());
+	        psmt.setString(2, dto.getPass());
+	        psmt.setString(3, dto.getEmail());
 	        result = psmt.executeUpdate();
 	    } catch (Exception e) {
 	        e.printStackTrace();

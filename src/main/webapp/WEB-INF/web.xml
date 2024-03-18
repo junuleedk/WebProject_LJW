@@ -57,7 +57,7 @@
   
   <!-- 세션유지시간 설정 : 분단위  -->
   <session-config>
-	<session-timeout>20</session-timeout>
+	<session-timeout>30</session-timeout>
   </session-config>
   
   <!-- 

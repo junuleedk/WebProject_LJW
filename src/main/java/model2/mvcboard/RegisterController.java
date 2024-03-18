@@ -31,7 +31,7 @@ public class RegisterController extends HttpServlet {
 	    String password = request.getParameter("userPw");
 	    String email = request.getParameter("userEmail");
 	     
-	 // 입력값 유효성 검사 (추가적인 유효성 검사가 필요한 경우 여기서 수행)
+	 // 아이디 중복 검사
         BoardDAO boardDAO = new BoardDAO();
         boolean duplicateId = boardDAO.checkId(userId);
         
@@ -48,12 +48,12 @@ public class RegisterController extends HttpServlet {
 	    dto.setEmail(email);
 		
         MemberDAO dao = new MemberDAO();
-        // 회원 정보 데이터베이스에 저장
+        
         int result = dao.insertMember(dto);
         
         if(result == 1) {
  			System.out.println("성공");
- 			JSFunction.alertLocation(response, "Welcome, Enjoy!!", "index.do");
+ 			JSFunction.alertLocation(response, "Welcome, Enjoy!!", "login.do");
  		}
  		else {
  			System.out.println("실패");
