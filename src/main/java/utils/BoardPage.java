@@ -96,10 +96,10 @@ public class BoardPage {
         바로가기 링크를 화면에 출력한다. 
          */
         if (pageTemp != 1) {
-            pagingStr += "<a href='" + reqUrl + "?pageNum=1'><img src='../images/paging1.jpg' alt='첫페이지' width='30' height='30'></a>";            
+            pagingStr += "<a href='" + reqUrl + "?pageNum=1'><img src='./images/paging1.gif' alt='첫페이지'></a>";            
             pagingStr += "&nbsp;";
             pagingStr += "<a href='" + reqUrl + "?pageNum=" + (pageTemp - 1)
-                         + "'><img src='../images/paging2.jpg' alt='이전블럭' width='30' height='30'></a>";
+                         + "'><img src='./images/paging2.gif' alt='이전블럭'></a>";
         }
         
         /*
@@ -126,10 +126,10 @@ public class BoardPage {
         //마지막 페이지가 아닌 경우에만 다음블럭을 출력한다. 
         if (pageTemp <= totalPages) {
             pagingStr += "<a href='" + reqUrl + "?pageNum=" + pageTemp
-                         + "'><img src='../images/paging3.jpg' alt='다음블럭' width='30' height='30'></a>";
+                         + "'><img src='./images/paging3.gif' alt='다음블럭'></a>";
             pagingStr += "&nbsp;";
             pagingStr += "<a href='" + reqUrl + "?pageNum=" + totalPages
-                         + "'><img src='../images/paging4.jpg' alt='마지막페이지' width='30' height='30'></a>";
+                         + "'><img src='./images/paging4.gif' alt='마지막페이지'></a>";
         }
 
         return pagingStr;
