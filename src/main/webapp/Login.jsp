@@ -113,6 +113,7 @@
 							<div>
 								<input type="password" placeholder="Password" name="pass" />
 							</div>
+							<!-- 로그인 에러 메세지  -->
 							<span style="color: white; font-size: 1.2em;"> 
 								<%=request.getAttribute("LoginErrMsg") == null ? "" : request.getAttribute("LoginErrMsg")%>
 							</span> <br />
