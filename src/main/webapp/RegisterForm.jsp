@@ -93,6 +93,7 @@ h2.txt {
             </div>
             <div>
                 <input type="email" name="userEmail" placeholder="Email"  />
+                
             </div>
             <div >
                 <input class="btn" type="submit" value="회원가입" />

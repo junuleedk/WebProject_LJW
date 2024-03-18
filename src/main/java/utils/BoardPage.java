@@ -95,12 +95,12 @@ public class BoardPage {
         pageTemp가 1이 아닐때만, 즉 첫번째 블럭이 아닐때만 이전블록
         바로가기 링크를 화면에 출력한다. 
          */
-        if (pageTemp != 1) {
+//        if (pageTemp != 1) {
             pagingStr += "<a href='" + reqUrl + "?pageNum=1'><img src='./images/paging1.gif' alt='첫페이지'></a>";            
             pagingStr += "&nbsp;";
             pagingStr += "<a href='" + reqUrl + "?pageNum=" + (pageTemp - 1)
                          + "'><img src='./images/paging2.gif' alt='이전블럭'></a>";
-        }
+//        }
         
         /*
         각 페이지 번호로 바로가기 링크 출력
@@ -124,13 +124,13 @@ public class BoardPage {
         
         //다음 페이지 블록 바로가기 링크 추가
         //마지막 페이지가 아닌 경우에만 다음블럭을 출력한다. 
-        if (pageTemp <= totalPages) {
+//        if (pageTemp <= totalPages) {
             pagingStr += "<a href='" + reqUrl + "?pageNum=" + pageTemp
                          + "'><img src='./images/paging3.gif' alt='다음블럭'></a>";
             pagingStr += "&nbsp;";
             pagingStr += "<a href='" + reqUrl + "?pageNum=" + totalPages
                          + "'><img src='./images/paging4.gif' alt='마지막페이지'></a>";
-        }
+//        }
 
         return pagingStr;
     }

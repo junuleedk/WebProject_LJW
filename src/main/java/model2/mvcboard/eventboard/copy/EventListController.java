@@ -75,7 +75,7 @@ public class EventListController extends HttpServlet {
 		 JSP로 데이터를 전달해야 하므로 아래와 같이 request영역에 데이터를 저장 후 
 		 포워드해서 출력한다. 
 		 */
-		String pagingImg = BoardPage.pagingStr(totalCount, pageSize,
+		String pagingImg = BoardPage.pagingImg(totalCount, pageSize,
 				 blockPage, pageNum, "./event.do");
 		map.put("pagingImg", pagingImg);//출력할 페이지 번호
 		map.put("totalCount", totalCount);//게시물의 전체개수
