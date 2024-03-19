@@ -134,9 +134,9 @@
 							<c:set var="file" value="${ dto.sfile }" />
 							<c:set var="fileType" value="${ file.substring(file.lastIndexOf('.') + 1)}" />
 							
-							<c:set var="imageType" value="jpg, bmp" />
-							<c:set var="videoType" value="mp4, avi" />
-							<c:set var="audioType" value="mp3, wav" />
+							<c:set var="imageType" value="jpg,bmp" />
+							<c:set var="videoType" value="mp4,avi" />
+							<c:set var="audioType" value="mp3,wav" />
 							
 							<c:forTokens items="${ imageType }" delims="," var="type">
 								<c:if test="${ fileType == type }">
